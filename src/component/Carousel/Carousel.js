@@ -6,12 +6,6 @@ import { img_300, noPicture } from "../../config/config";
 import "./Carousel.css";
 const handleDragStart = (e) => e.preventDefault();
 
-const items = [
-  <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-  <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-  <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-];
-
 const Carousel = ({ media_type, id }) => {
   const [credits, setCredits] = useState([]);
 
