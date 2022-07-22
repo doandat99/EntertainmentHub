@@ -1,5 +1,6 @@
 .trending,
 .movie,
+.series,
 .search {
   display: flex;
   flex-wrap: wrap;

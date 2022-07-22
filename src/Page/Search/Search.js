@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Button,
   createTheme,
@@ -6,12 +7,10 @@ import {
   TextField,
   ThemeProvider,
 } from "@material-ui/core";
+import CustomPagination from "../../component/Pagination/CustomPagination";
+import SingleContent from "../../component/SingleContent/SingleContent";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import CustomPanigation from "../../Panigation/CustomPanigation";
-import SingleContent from "../../components/SingleContent/SingleContent";
-import { common } from "@material-ui/core/colors";
 const Search = () => {
   const [type, setType] = useState(0);
   const [page, setPage] = useState(1);
@@ -92,9 +91,8 @@ const Search = () => {
           <h1>Chưa có dữ liệu tìm kiếm</h1>
         )}
       </div>
-      {searchText && !content && (type ? <h1>not</h1> : <h1>not</h1>)}
       {numOfPage > 1 && (
-        <CustomPanigation setPage={setPage} numOfPages={numOfPage} />
+        <CustomPagination setPage={setPage} numOfPages={numOfPage} />
       )}
     </>
   );

@@ -1,41 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CustomPagination from "../../component/Pagination/CustomPagination";
 import SingleContent from "../../component/SingleContent/SingleContent";
 import axios from "axios";
 import { useGene } from "../../hooks/useGene";
 import Genres from "../../component/Genres/Genres";
-const Series = () => {
+const Movie = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
   const genreforURL = useGene(selectedGenres);
-  const fetchSeries = async () => {
+  const fetchMovies = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`
     );
     setContent(data.results);
     setNumOfPages(data.total_pages);
   };
+
   useEffect(() => {
     window.scroll(0, 0);
-    fetchSeries();
+    fetchMovies();
     // eslint-disable-next-line
   }, [page, genreforURL]);
   return (
     <>
       {" "}
-      <span className="pageTitle">Series</span>
+      <span className="pageTitle">Movie</span>
       <Genres
-        type="tv"
+        type="movie"
         selectedGenres={selectedGenres}
         setSelectedGenres={setSelectedGenres}
         genres={genres}
         setGenres={setGenres}
         setPage={setPage}
       />
-      <div className="series">
+      <div className="movie">
         {content &&
           content.map((c) => (
             <SingleContent
@@ -56,4 +57,4 @@ const Series = () => {
   );
 };
 
-export default Series;
+export default Movie;
