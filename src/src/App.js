@@ -1,12 +1,12 @@
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Trending from "./component/Page/Trending/Trending";
-import Movies from "./component/Page/Movies/Movies";
-import Search from "./component/Page/Search/Search";
-import Series from "./component/Page/TV Series/Series";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./component/Header/Header";
-import SimpleBottomNavigation from "./component/MainNavbar";
 import { Container } from "@material-ui/core";
+import Trending from "./Page/Trending/Trending";
+import Movie from "./Page/Movie/Movie";
+import Series from "./Page/Series/Series";
+import Search from "./Page/Search/Search";
+import SimpleBottomNavigation from "./component/MainNavbar";
 function App() {
   return (
     <BrowserRouter>
@@ -15,7 +15,7 @@ function App() {
         <Container>
           <Switch>
             <Route path="/" component={Trending} exact />
-            <Route path="/movies" component={Movies} />
+            <Route path="/movie" component={Movie} />
             <Route path="/series" component={Series} />
             <Route path="/search" component={Search} />
           </Switch>
